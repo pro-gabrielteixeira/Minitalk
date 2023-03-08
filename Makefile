@@ -6,7 +6,7 @@
 #    By: gateixei <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/05 16:19:14 by gateixei          #+#    #+#              #
-#    Updated: 2023/03/06 22:02:57 by gateixei         ###   ########.fr        #
+#    Updated: 2023/03/08 01:07:12 by gateixei         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,6 +17,7 @@ SERVER_SRC = server.c
 
 # --- Constants ---
 
+NAME = server client
 CC = gcc
 CFLAGS = -Wextra -Wall -Werror
 SERVER_NAME = server
@@ -24,7 +25,7 @@ CLIENT_NAME = client
 
 # --- Compile ---
 
-all: server client
+all: $(NAME) 
 
 server: $(SERVER_SRC)
 	@$(CC) $(CFLAGS) $(SERVER_SRC) -o $(SERVER_NAME)
