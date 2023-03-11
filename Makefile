@@ -6,7 +6,7 @@
 #    By: gateixei <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/05 16:19:14 by gateixei          #+#    #+#              #
-#    Updated: 2023/03/08 01:07:12 by gateixei         ###   ########.fr        #
+#    Updated: 2023/03/11 23:33:23 by gateixei         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,32 +14,39 @@
 
 CLIENT_SRC = client.c
 SERVER_SRC = server.c
+LIBFT_SRC = libft/ft_strlen.c
 
 # --- Constants ---
-
-NAME = server client
-CC = gcc
-CFLAGS = -Wextra -Wall -Werror
-SERVER_NAME = server
+NAME = client server
 CLIENT_NAME = client
+SERVER_NAME = server
+HEADER = minitalk.h
+CC = gcc
+CFLAGS = -Wextra -Wall -Werror -g -fsanitize=address -o
+
+# --- Objects ---
+
+CLIENT_OBJ = $(CLIENT_SRC: .c=.o)
+SERVER_OBJ = $(SERVER_SRC: .c=.o)
+LIBFT_OBJ= $(LIBFT_SRC: .c=.o)
 
 # --- Compile ---
 
-all: $(NAME) 
+all: $(SERVER_SRC) $(LIBFT_SRC) $(CLIENT_SRC) $(HEADER) $(NAME)
 
-server: $(SERVER_SRC)
-	@$(CC) $(CFLAGS) $(SERVER_SRC) -o $(SERVER_NAME)
-	@echo "\nServer is online!"
-
-client: $(CLIENT_SRC)
-	@$(CC) $(CFLAGS) $(CLIENT_SRC) -o $(CLIENT_NAME)
+client: 
+	@$(CC) $(CFLAGS) $(CLIENT_NAME) $(HEADER) $(CLIENT_SRC)
 	@echo "\nClient is Ready, send me that PID!"
+
+server: 
+	@$(CC) $(CFLAGS) $(SERVER_NAME) $(HEADER) $(SERVER_SRC)
+	@echo "\nServer is online!"
 
 clean:
 	@rm -rf *.o
 
 fclean: clean
-	@rm -rf $(SERVER_NAME) $(CLIENT_NAME)
+	@rm -rf $(NAME)
 
 re: fclean all
 

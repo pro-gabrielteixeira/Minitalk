@@ -1,35 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   server.c                                           :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gateixei <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/05 17:04:45 by gateixei          #+#    #+#             */
-/*   Updated: 2023/03/11 23:30:36 by gateixei         ###   ########.fr       */
+/*   Created: 2023/03/11 21:13:50 by gateixei          #+#    #+#             */
+/*   Updated: 2023/03/11 21:30:11 by gateixei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minitalk.h"
+#include "../minitalk.h"
 
-void    sig_handler(int signal)
+int	ft_strlen(char *str)
 {
-    if(signal == SIGUSR1)
-        write(1, "0", 1);
-    else if (signal == SIGUSR2)
-        write(1, "1", 1);
-}
+    int	i;
 
-int	main(void)
-{
-    // char    *str;
-
-    // str = "Arroz";
-    signal(SIGUSR1, sig_handler);
-    signal(SIGUSR2, sig_handler);
-    printf("%d\n", getpid());
-    // printf("%d", ft_strlen(str));
-	while (TRUE)
-		pause();
-    return (0);
+	i = 0;
+	while (str[i] != '\0')
+		i++;
+	return (0);
 }

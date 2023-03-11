@@ -1,35 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   server.c                                           :+:      :+:    :+:   */
+/*   minitalk.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gateixei <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/05 17:04:45 by gateixei          #+#    #+#             */
-/*   Updated: 2023/03/11 23:30:36 by gateixei         ###   ########.fr       */
+/*   Created: 2023/03/11 21:15:39 by gateixei          #+#    #+#             */
+/*   Updated: 2023/03/11 21:27:35 by gateixei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minitalk.h"
+#ifndef MINITALK_H
+# define MINITALK_H
 
-void    sig_handler(int signal)
-{
-    if(signal == SIGUSR1)
-        write(1, "0", 1);
-    else if (signal == SIGUSR2)
-        write(1, "1", 1);
-}
+# define TRUE 1
+# define FALSE 0
 
-int	main(void)
-{
-    // char    *str;
+# include <unistd.h>
+# include <sys/types.h>
+# include <stdio.h>
+# include <stdlib.h>
+# include <signal.h>
 
-    // str = "Arroz";
-    signal(SIGUSR1, sig_handler);
-    signal(SIGUSR2, sig_handler);
-    printf("%d\n", getpid());
-    // printf("%d", ft_strlen(str));
-	while (TRUE)
-		pause();
-    return (0);
-}
+//libft
+int ft_strlen(char *str);
+
+#endif
