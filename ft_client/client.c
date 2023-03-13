@@ -6,7 +6,7 @@
 /*   By: gateixei <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 17:04:32 by gateixei          #+#    #+#             */
-/*   Updated: 2023/03/13 01:22:20 by gateixei         ###   ########.fr       */
+/*   Updated: 2023/03/13 23:38:21 by gateixei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,16 +21,16 @@ void    string_handler(char *str, int t_pid)
     j = 0;
     while (str[j] != '\0')
     {
-        i = 0;
-        while (i < 8)
+        i = 7;
+        while (i >= 0)
         {
             res = (str[j] >> i) & 1;
             if (res == 0)
                 kill(t_pid, SIGUSR1);
             else
                 kill(t_pid, SIGUSR2);
-            i++;
-            usleep(1000);
+            i--;
+            usleep(200);
         }
         j++;
     }

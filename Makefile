@@ -6,7 +6,7 @@
 #    By: gateixei <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/05 16:19:14 by gateixei          #+#    #+#              #
-#    Updated: 2023/03/12 22:54:38 by gateixei         ###   ########.fr        #
+#    Updated: 2023/03/13 23:42:26 by gateixei         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,7 +48,8 @@ client: $(CLIENT_OBJ)
 	@echo "\nClient is Ready, send me that PID!"
 
 clean:
-	@rm -rf $(OBJS)
+	@rm -rf $(CLIENT_OBJ)
+	@rm -rf $(SERVER_OBJ)
 	@cd libft && make clean
 
 fclean: clean
