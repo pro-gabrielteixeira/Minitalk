@@ -1,23 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gateixei <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/11 21:13:50 by gateixei          #+#    #+#             */
-/*   Updated: 2023/03/12 22:43:06 by gateixei         ###   ########.fr       */
+/*   Created: 2023/03/12 19:35:14 by gateixei          #+#    #+#             */
+/*   Updated: 2023/03/12 20:55:02 by gateixei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "include/libft.h"
+#ifndef LIBFT_H
+# define LIBFT_H
 
-int	ft_strlen(char *str)
-{
-    int	i;
+# define TRUE 1
+# define FALSE 0
 
-	i = 0;
-	while (str[i] != '\0' && str)
-		i++;
-	return (i);
-}
+# include <unistd.h>
+# include <sys/types.h>
+# include <stdio.h>
+# include <stdlib.h>
+# include <signal.h>
+
+int ft_strlen(char *str);
+int ft_atoi(char *str);
+
+#endif
