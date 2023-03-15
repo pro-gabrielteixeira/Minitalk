@@ -1,31 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gateixei <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/12 19:35:14 by gateixei          #+#    #+#             */
-/*   Updated: 2023/03/15 23:20:31 by gateixei         ###   ########.fr       */
+/*   Created: 2023/03/15 23:17:03 by gateixei          #+#    #+#             */
+/*   Updated: 2023/03/15 23:20:20 by gateixei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
-# define LIBFT_H
+#include "include/libft.h"
 
-# define TRUE 1
-# define FALSE 0
-
-# include <unistd.h>
-# include <sys/types.h>
-# include <stdio.h>
-# include <stdlib.h>
-# include <signal.h>
-
-int     ft_strlen(char *str);
-int     ft_atoi(char *str);
-char    *ft_itoa(int n);
-char	*ft_strdup(const char *s1);
-void    ft_putnbr_fd(int n, int fd);
-
-#endif
+void    ft_putnbr_fd(int n, int fd)
+{
+    char    c;
+    if (n > 9)
+        ft_putnbr_fd((n / 10), fd);
+    c = (n % 10) + '0';
+    write(1, &c, 1);
+}

@@ -1,31 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gateixei <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/12 19:35:14 by gateixei          #+#    #+#             */
-/*   Updated: 2023/03/15 23:20:31 by gateixei         ###   ########.fr       */
+/*   Created: 2023/03/15 20:11:02 by gateixei          #+#    #+#             */
+/*   Updated: 2023/03/15 20:11:30 by gateixei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
-# define LIBFT_H
+#include "include/libft.h"
 
-# define TRUE 1
-# define FALSE 0
+char	*ft_strdup(const char *s1)
+{
+	char	*str;
+	char	*src;
+	int		i;
+	int		c;
 
-# include <unistd.h>
-# include <sys/types.h>
-# include <stdio.h>
-# include <stdlib.h>
-# include <signal.h>
-
-int     ft_strlen(char *str);
-int     ft_atoi(char *str);
-char    *ft_itoa(int n);
-char	*ft_strdup(const char *s1);
-void    ft_putnbr_fd(int n, int fd);
-
-#endif
+	c = 0;
+	i = ft_strlen((char *) s1);
+	str = (char *) malloc(i + 1);
+	if (!str)
+		return (0);
+	src = (char *) s1;
+	while (src[c] != '\0')
+	{
+		str[c] = src[c];
+		c++;
+	}
+	str[c] = '\0';
+	return (str);
+}

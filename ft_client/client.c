@@ -6,11 +6,23 @@
 /*   By: gateixei <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 17:04:32 by gateixei          #+#    #+#             */
-/*   Updated: 2023/03/13 23:38:21 by gateixei         ###   ########.fr       */
+/*   Updated: 2023/03/15 22:50:12 by gateixei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/minitalk.h"
+
+void    end_sig(int s_pid)
+{
+    int i;
+    
+    i = 0;
+    while (i++ < 8)
+    {
+        kill(s_pid, SIGUSR1);
+        usleep(100);
+    }   
+}
 
 void    string_handler(char *str, int t_pid)
 {
@@ -30,17 +42,21 @@ void    string_handler(char *str, int t_pid)
             else
                 kill(t_pid, SIGUSR2);
             i--;
-            usleep(200);
+            usleep(100);
         }
         j++;
     }
-            
 }
 
 int	main(int argc, char **argv)
 {
-	if (argc != 3)
+    int     s_pid;
+
+    if (argc != 3)
         return (0);
-    string_handler(argv[2], atoi(argv[1]));
-    printf("PID recebido: %d\nMensagem: %s\n", atoi(argv[1]), argv[2]);
+    s_pid = ft_atoi(argv[1]);
+    string_handler(argv[2], s_pid);
+    string_handler("\n", s_pid);
+    end_sig(s_pid);
+    return (0);
 }
