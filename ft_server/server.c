@@ -6,7 +6,7 @@
 /*   By: gateixei <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 17:04:45 by gateixei          #+#    #+#             */
-/*   Updated: 2023/03/15 23:24:53 by gateixei         ###   ########.fr       */
+/*   Updated: 2023/03/16 01:24:32 by gateixei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,12 +38,12 @@ char	*add_char(char *c, char *str)
 	return (new_str);
 }
 
-void    sig_handler(int signal)
+void	sig_handler(int signal)
 {
 	static int	i = 0;
 	static char	c = 0;
 	static char	*str;
-	
+
 	if (signal == SIGUSR1)
 		c = (c << 1);
 	else if (signal == SIGUSR2)
@@ -67,11 +67,11 @@ void    sig_handler(int signal)
 
 int	main(void)
 {
-    ft_putnbr_fd(getpid(), 1);
+	ft_putnbr_fd(getpid(), 1);
 	write(1, "\n", 1);
-    signal(SIGUSR1, sig_handler);
-    signal(SIGUSR2, sig_handler);
+	signal(SIGUSR1, sig_handler);
+	signal(SIGUSR2, sig_handler);
 	while (TRUE)
 		pause();
-    return (0);
+	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: gateixei <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 19:35:14 by gateixei          #+#    #+#             */
-/*   Updated: 2023/03/15 23:20:31 by gateixei         ###   ########.fr       */
+/*   Updated: 2023/03/16 01:34:42 by gateixei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,10 @@
 # include <stdlib.h>
 # include <signal.h>
 
-int     ft_strlen(char *str);
-int     ft_atoi(char *str);
-char    *ft_itoa(int n);
+int		ft_strlen(char *str);
+int		ft_atoi(char *str);
+char	*ft_itoa(int n);
 char	*ft_strdup(const char *s1);
-void    ft_putnbr_fd(int n, int fd);
+void	ft_putnbr_fd(int n, int fd);
 
 #endif
